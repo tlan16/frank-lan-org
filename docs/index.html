@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Frank Lan's Home Page</title>
+
     <style>
         body {
             font-size: clamp(1.375rem, 1.25rem + 0.5vw, 1.75rem);
             line-height: 1.6;
+            overflow-wrap: anywhere;
         }
 
         .intro,
@@ -20,7 +22,7 @@
             display: inline;
             margin: 0;
             font: inherit;
-            text-decoration: underline;
+            font-weight: bold;
         }
 
         .intro p,
@@ -31,7 +33,17 @@
 
         a {
             color: inherit;
-            text-decoration: none;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
+        }
+
+        h2 a {
+            font-weight: normal;
+        }
+
+        a:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 3px;
         }
     </style>
 </head>
@@ -39,37 +51,44 @@
 <main>
     <header class="intro">
         <h1>Frank Lan</h1>
+        <br/>
         <p>Data engineer, web developer. Full stack programming enthusiast, from browser app to bare metal.</p>
     </header>
 
     <hr>
 
     <section class="job">
-        <h2>RealMatch API</h2><p>: address matching algorithm and geocoding using normalisation, phrasing and fuzzy matching,
-        reading data from an embedded database. The API and telemetry easily handled 3000 req/s and auto scales
-        horizontally.</p>
+        <h2>RealMatch API</h2>
+        <p>: address matching algorithm and geocoding using normalisation, phrasing and fuzzy matching,
+            reading data from an embedded database. The API and telemetry easily handled 3000 req/s and auto scales
+            horizontally.</p>
     </section>
 
     <section class="job">
-        <h2><a href="https://www.property.com.au/">property.com.au</a></h2><p>: a property research website relaunched in 2022 with
-        around 15 million searchable Australian addresses, including sales and rental histories. My team built its web
-        frontend and backend APIs from scratch using TypeScript, React, Node.js, GraphQL, PostgreSQL/PostGIS and AWS
-        (ECS, CloudFront).</p>
+        <h2><a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: a property research website relaunched in 2022 with
+            around 15 million searchable Australian addresses, including sales and rental histories. My team built its
+            web frontend and backend APIs from scratch using TypeScript, React, Node.js, GraphQL, PostgreSQL/PostGIS and
+            AWS
+            (ECS, CloudFront).</p>
     </section>
 
     <section class="job">
-        <h2>Aerial imagery pipeline for <a href="https://www.property.com.au/">property.com.au</a></h2><p>: concurrent, queue-driven
-        image processing with production workers configured to auto-scale from zero to many ECS tasks. I built the image
-        processing, scheduling, data integration and delivery infrastructure, with LocalStack emulating AWS services
-        for cloud-free local development. Built with TypeScript, Node.js, Sharp, Docker and AWS
-        (ECS Fargate, SQS, S3, DynamoDB, CloudFront).</p>
+        <h2>Aerial imagery pipeline for <a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: concurrent, queue-driven
+            image processing with production workers configured to auto-scale from zero to many ECS tasks. I built the
+            image processing, scheduling, data integration and delivery infrastructure, with LocalStack emulating AWS
+            services
+            for cloud-free local development. Built with TypeScript, Node.js, Sharp, Docker and AWS
+            (ECS Fargate, SQS, S3, DynamoDB, CloudFront).</p>
     </section>
 
     <section class="job">
-        <h2>Member accounts and authentication for <a href="https://www.property.com.au/">property.com.au</a></h2><p>: supporting over
-        43,000 monthly active members (May 2026). I built sign-in and token handling, profile management, recent searches,
-        followed properties and account deletion. Built with TypeScript, Node.js, GraphQL, Auth0 (OAuth 2.0/OpenID Connect),
-        Aurora PostgreSQL and AWS ECS Fargate.</p>
+        <h2>Member accounts and authentication for <a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: supporting over
+            43,000 monthly active members (May 2026). I built sign-in and token handling, profile management, recent
+            searches, followed properties and account deletion. Built with TypeScript, Node.js, GraphQL,
+            Auth0 (OAuth 2.0/OpenID Connect), Aurora PostgreSQL and AWS ECS Fargate.</p>
     </section>
 </main>
 </body>
