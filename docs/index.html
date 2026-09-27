@@ -1,16 +1,23 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Frank Lan's Home Page</title>
 </head>
 <body>
-<p><a href="https://www.property.com.au/">property.com.au</a>: a property research website covering around 15 million properties across Australia, including sales and rental histories. My team built its web frontend and backend APIs from scratch using TypeScript, React, Node.js, GraphQL, PostgreSQL/PostGIS and AWS (ECS, CloudFront).</p>
-<p>Aerial imagery pipeline for <a href="https://www.property.com.au/">property.com.au</a>: processes and publishes
-    aerial photographs for property research. I contributed to image processing, task scheduling, data integration and
-    delivery infrastructure. Built with TypeScript, Node.js, Sharp and AWS (ECS Fargate, SQS, S3, DynamoDB, CloudFront).
-</p>
-<p>Member accounts and authentication for <a href="https://www.property.com.au/">property.com.au</a>: sign-in, profile management and account lifecycle services. I contributed to authentication and token handling, recent searches, followed properties and account deletion. Built with TypeScript, Node.js, GraphQL, Auth0 (OAuth 2.0/OpenID Connect), Aurora PostgreSQL and AWS ECS Fargate.</p>
+<p><a href="https://www.property.com.au/">property.com.au</a>: a property research website relaunched in 2022 with
+    around 15 million searchable Australian addresses, including sales and rental histories. My team built its web
+    frontend and backend APIs from scratch using TypeScript, React, Node.js, GraphQL, PostgreSQL/PostGIS and AWS
+    (ECS, CloudFront).</p>
+<p>Aerial imagery pipeline for <a href="https://www.property.com.au/">property.com.au</a>: concurrent, queue-driven
+    image processing with production workers configured to auto-scale from zero to many ECS tasks. I built the image
+    processing, scheduling, data integration and delivery infrastructure, with LocalStack emulating AWS services
+    for cloud-free local development. Built with TypeScript, Node.js, Sharp, Docker and AWS
+    (ECS Fargate, SQS, S3, DynamoDB, CloudFront).</p>
+<p>Member accounts and authentication for <a href="https://www.property.com.au/">property.com.au</a>: supporting over
+    43,000 monthly active members (May 2026). I built sign-in and token handling, profile management, recent searches,
+    followed properties and account deletion. Built with TypeScript, Node.js, GraphQL, Auth0 (OAuth 2.0/OpenID Connect),
+    Aurora PostgreSQL and AWS ECS Fargate.</p>
 </body>
 </html>
