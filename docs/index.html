@@ -1,26 +1,177 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Frank Lan</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Frank Lan's Home Page</title>
+
     <style>
-      html, body { margin: 0; height: 100%; overflow: hidden; }
-      canvas { display: block; }
+        :root {
+            color-scheme: light dark;
+        }
+
+        body {
+            color: CanvasText;
+            background-color: Canvas;
+            font-size: clamp(1.375rem, 1.25rem + 0.5vw, 1.75rem);
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        .intro,
+        .job {
+            margin: 1em 0;
+        }
+
+        h1,
+        h2 {
+            display: inline;
+            margin: 0;
+            font: inherit;
+            font-weight: bold;
+        }
+
+        .intro p,
+        .job p {
+            display: inline;
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 0.15em;
+        }
+
+        h2 a {
+            font-weight: normal;
+        }
+
+        a:focus-visible {
+            outline: 2px solid currentColor;
+            outline-offset: 3px;
+        }
     </style>
-  <link rel="modulepreload" href="./rust-web-app-frank-resume-1ff89c158b4ac64f.js" crossorigin="anonymous" integrity="sha384-vleUmXsGg1L/BH5nDDBzX7aIdUNBrJ6hFm3VybozTQ2TIrEBWGRlK4ZM5I51dyQJ"><link rel="preload" href="./rust-web-app-frank-resume-1ff89c158b4ac64f_bg.wasm" crossorigin="anonymous" integrity="sha384-OZzAQLA+lANXQeHXiXnO3Sw12Ls+bvHbAANKzGLcDJW9MYId6vEz6tjZcPKta6+J" as="fetch" type="application/wasm"></head>
-  <body>
-    <canvas id="canvas"></canvas>
-  
-<script type="module">
-import init, * as bindings from './rust-web-app-frank-resume-1ff89c158b4ac64f.js';
-const wasm = await init({ module_or_path: './rust-web-app-frank-resume-1ff89c158b4ac64f_bg.wasm' });
+</head>
+<body>
+<main>
+    <header class="intro">
+        <h1>Frank Lan</h1>
+        <br>
+        <p>Data engineer, web developer. Full stack programming enthusiast, from browser app to bare metal.</p>
+    </header>
 
+    <hr>
 
-window.wasmBindings = bindings;
+    <section class="job">
+        <h2>RealMatch API</h2>
+        <p>: address matching algorithm and geocoding using normalisation, phrasing and fuzzy matching,
+            reading data from an embedded database. The API and telemetry easily handled 3000 req/s and auto scales
+            horizontally.</p>
+    </section>
 
+    <section class="job">
+        <h2><a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: a property research website relaunched in 2022 with
+            around 15 million searchable Australian addresses, including sales and rental histories. My team built its
+            web frontend and backend APIs from scratch using TypeScript, React, Node.js, GraphQL, PostgreSQL/PostGIS and
+            AWS (ECS, CloudFront).</p>
+    </section>
 
-dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+    <section class="job">
+        <h2>Aerial imagery pipeline for <a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: concurrent, queue-driven
+            image processing with production workers configured to auto-scale from zero to many ECS tasks. I built the
+            image processing, scheduling, data integration and delivery infrastructure, with LocalStack emulating AWS
+            services for cloud-free local development. Built with TypeScript, Node.js, Sharp, Docker and AWS
+            (ECS Fargate, SQS, S3, DynamoDB, CloudFront).</p>
+    </section>
 
-</script></body>
+    <section class="job">
+        <h2>Member accounts and authentication for <a href="https://www.property.com.au/">property.com.au</a></h2>
+        <p>: supporting over
+            43,000 monthly active members (May 2026). I built sign-in and token handling, profile management, recent
+            searches, followed properties and account deletion. Built with TypeScript, Node.js, GraphQL,
+            Auth0 (OAuth 2.0/OpenID Connect), Aurora PostgreSQL and AWS ECS Fargate.</p>
+    </section>
+
+    <section class="job">
+        <h2>Scalable Data Storage at AARNet</h2>
+        <p>: secure storage, sharing and access auditing for sensitive research data, complementing CloudStor.
+            As the primary developer, I designed and built the backend from scratch, with JWT-authenticated REST APIs
+            and ownCloud integration. Built with TypeScript, NestJS, MariaDB, Kubernetes and AWS (RDS, Cognito),
+            with over 90% automated test coverage using Jest.</p>
+    </section>
+
+    <section class="job">
+        <h2>B2B commerce platform at <a href="https://www.trevipay.com/">TreviPay</a></h2>
+        <p>: invoicing, accounts receivable and recourse for B2B trade-credit customers. I built the invoicing
+            and AR API — buyers, sellers, invoices, FX rates and pre-authorisations — in NestJS and PostgreSQL,
+            its Vue UI, and the Recourse Center API and UI; transactions synced into the Go-based Transaction
+            Acquiring Platform. Built with TypeScript, NestJS, Vue, PostgreSQL, Docker and GitLab CI.</p>
+    </section>
+
+    <section class="job">
+        <h2><a href="https://dabus.io/">dabus</a> multi-tenant integration platform at <a
+                href="https://balance.com.au/">Balance Internet</a></h2>
+        <p>: a highly scalable e-commerce integration solution synchronising millions of product, order and
+            customer records between multiple shopfronts and backend platforms — Magento, Apparel21, Pronto and
+            BorderFree. I built the integration across a variety of interfaces — synchronous and asynchronous APIs,
+            CSV and FTP feeds — using message-driven batching and parallelisation to keep it highly scalable, with
+            conflict and retry handling as well as rate limiting to cope with downstream system limitations. Built
+            with PHP (Symfony), Node.js, MongoDB, RabbitMQ, Elasticsearch, Kubernetes and AWS (Lambda, API Gateway,
+            Cognito).</p>
+    </section>
+
+    <section class="job">
+        <h2>iPact — Figer-to-Curb (FTTC) deployment automation at <a href="https://www.nbnco.com.au/">NBN</a></h2>
+        <p>: automated FTTC rollout by integrating multiple systems — including the platforms managing NBN
+            infrastructure hardware, such as street-pit distribution point units and connection devices — so field
+            engineers could activate and manage FTTC devices end to end. I code system that integrates with internal
+            systems over REST, SOAP, and communication system that sends SMS.
+            and Oracle.</p>
+    </section>
+
+    <section class="job">
+        <h2>Employee onboarding, training and compliance platform at <a href="https://www.vortala.com/">Vortala</a></h2>
+        <p>: the backend of a system that helps companies onboard new employees with training and compliance
+            materials. As the sole backend developer, I scoped the technical requirements, designed the MySQL schema
+            from scratch, built the Laravel REST API with PHPUnit automated tests, and migrated data from the previous
+            version of the platform. I also set up AWS infrastructure — EC2, RDS and S3 — and automated deployment.
+            Built with PHP (Laravel), MySQL and AWS (EC2, RDS, S3).</p>
+    </section>
+
+    <section class="job">
+        <h2>Magento B2B retail platform at <a href="https://sysbox.com.au/">Sysbox</a></h2>
+        <p>: an e-commerce and ERP system for a computer retailer with over 10,000 active products, managing stock,
+            sales, purchasing and warranty across multiple storefronts — including Magento and eBay. I built the
+            PRADO PHP API server and Prototype JS frontend with deep Magento 1 integration, automated supplier data
+            feeds and batch price updates, and dynamic competitor price matching using configurable rules. Built
+            with PHP (PRADO), Prototype JS, Magento 1, MySQL and Apache on on-premise bare metal machine running
+            CentOS.</p>
+    </section>
+
+    <section class="job">
+        <h2><a href="https://github.com/tlan16/mips-cpu">MIPS CPU on Cyclone FPGA project</a> (Monash University
+            ECE4074)
+        </h2>
+        <p>: designed and implemented a 32-bit MIPS processor in Verilog and synthesised it onto an Altera Cyclone
+            FPGA — a five-stage pipeline with hazard detection and data forwarding — and benchmarked it with large
+            matrix multiplication workloads. Built with Verilog and Quartus, verified with Verilog test benches in
+            Icarus Verilog.</p>
+    </section>
+
+    <section class="job">
+        <h2><a href="https://www.youtube.com/watch?v=untlxRjVSos">Autonomous hockey robot</a> (Monash University
+            ECE3091)
+        </h2>
+        <p>: a fully autonomous field-hockey robot for the Monash capstone design tournament. It recognised the ball
+            by its assigned colour, located the goal and shot — all on board the robot using its own sensors and
+            microcontroller, with no remote control or external computing. I programmed its control logic on
+            Arduino, from colour tracking and navigation through to the shooting mechanism. Built with Arduino
+            (embedded C), on-board colour vision, motors and sensors.</p>
+    </section>
+</main>
+</body>
 </html>
-
