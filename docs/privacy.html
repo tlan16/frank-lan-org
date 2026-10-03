@@ -463,7 +463,7 @@
     const navigationLinks = Array.from(document.querySelectorAll('nav a'));
     let scrollPending = false;
 
-    function updateCurrentSection() {
+    const updateCurrentSection = () => {
         let current = null;
         for (const heading of sectionHeadings) {
             if (heading.getBoundingClientRect().top <= window.innerHeight * 0.35) current = heading.id;
@@ -473,7 +473,7 @@
             else link.removeAttribute('aria-current');
         });
         scrollPending = false;
-    }
+    };
 
     window.addEventListener('scroll', () => {
         if (!scrollPending) {
@@ -484,20 +484,20 @@
     window.addEventListener('resize', updateCurrentSection);
     updateCurrentSection();
     // Optional Glean export integration; safe to open as a standalone file.
-    if (window.GleanBridge && typeof window.GleanBridge.postMessage === 'function' && typeof window.GleanBridge.onMessage === 'function') {
+    if (typeof window.GleanBridge?.postMessage === 'function' && typeof window.GleanBridge?.onMessage === 'function') {
         window.GleanBridge.postMessage({
             actionId: 'export-pdf',
             type: 'glean-add-menu',
             metadata: {label: 'Export as PDF', icon: 'export'}
         });
-        window.GleanBridge.onMessage('action', function (data) {
+        window.GleanBridge.onMessage('action', data => {
             if (data.actionId === 'export-pdf') window.print();
         });
     }
 
-    function prepareChartsForPrint() {
+    const prepareChartsForPrint = () => {
         if (!window.echarts) return;
-        document.querySelectorAll('[_echarts_instance_]').forEach(function (el) {
+        document.querySelectorAll('[_echarts_instance_]').forEach(el => {
             const chart = window.echarts.getInstanceByDom(el);
             if (!chart) return;
             const img = new Image();
@@ -508,17 +508,17 @@
             el.style.position = 'relative';
             el.appendChild(img);
         });
-    }
+    };
 
-    function cleanUpAfterPrint() {
-        document.querySelectorAll('[_echarts_instance_]').forEach(function (el) {
+    const cleanUpAfterPrint = () => {
+        document.querySelectorAll('[_echarts_instance_]').forEach(el => {
             const img = el.querySelector('.print-chart-img');
             if (!img) return;
             img.remove();
             el.style.position = el.dataset.prevPosition || '';
             delete el.dataset.prevPosition;
         });
-    }
+    };
 
     window.addEventListener('beforeprint', prepareChartsForPrint);
     window.addEventListener('afterprint', cleanUpAfterPrint);

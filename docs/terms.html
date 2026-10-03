@@ -708,42 +708,42 @@ GNU AGPL, see &lt;<a aria-label="GNU licenses (http://www.gnu.org/licenses/)" cl
 <footer data-glean-id="page-footer"><a href="#contents-heading">Back to contents</a></footer>
 
 <script>
-(function () {
+(() => {
   // Native anchors, lists and the skip link work without JavaScript.
   // Track the section at the reading position without moving keyboard focus.
-  var headings = Array.from(document.querySelectorAll('main h2[id], main h3[id]'));
-  var links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
-  var pending = false;
-  function updateCurrent() {
+  const headings = [...document.querySelectorAll('main h2[id], main h3[id]')];
+  const links = [...document.querySelectorAll('nav a[href^="#"]')];
+  let pending = false;
+  const updateCurrent = () => {
     pending = false;
-    var current = null;
-    for (var i = 0; i < headings.length; i++) {
-      if (headings[i].getBoundingClientRect().top <= 100) current = headings[i].id;
+    let current = null;
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top <= 100) current = heading.id;
       else break;
     }
-    links.forEach(function (link) {
+    links.forEach(link => {
       if (link.getAttribute('href') === '#' + current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
-  }
-  window.addEventListener('scroll', function () {
+  };
+  window.addEventListener('scroll', () => {
     if (!pending) { pending = true; window.requestAnimationFrame(updateCurrent); }
   }, {passive: true});
   window.addEventListener('resize', updateCurrent);
   updateCurrent();
   // Optional host integration; the standalone download needs no external scripts.
-  if (window.GleanBridge && typeof window.GleanBridge.postMessage === 'function' && typeof window.GleanBridge.onMessage === 'function') {
+  if (typeof window.GleanBridge?.postMessage === 'function' && typeof window.GleanBridge?.onMessage === 'function') {
     window.GleanBridge.postMessage({ actionId: 'export-pdf', type: 'glean-add-menu', metadata: {label: 'Export as PDF', icon: 'export'} });
-    window.GleanBridge.onMessage('action', function (data) {
+    window.GleanBridge.onMessage('action', data => {
       if (data.actionId === 'export-pdf') window.print();
     });
   }
-  function prepareChartsForPrint() {
+  const prepareChartsForPrint = () => {
     if (!window.echarts) return;
-    document.querySelectorAll('[_echarts_instance_]').forEach(function (el) {
-      var chart = window.echarts.getInstanceByDom(el);
+    document.querySelectorAll('[_echarts_instance_]').forEach(el => {
+      const chart = window.echarts.getInstanceByDom(el);
       if (!chart) return;
-      var img = new Image();
+      const img = new Image();
       img.src = chart.getDataURL({type: 'png', pixelRatio: 2});
       img.className = 'print-chart-img';
       img.alt = 'Chart for print';
@@ -752,16 +752,16 @@ GNU AGPL, see &lt;<a aria-label="GNU licenses (http://www.gnu.org/licenses/)" cl
       el.style.position = 'relative';
       el.appendChild(img);
     });
-  }
-  function cleanUpAfterPrint() {
-    document.querySelectorAll('[_echarts_instance_]').forEach(function (el) {
-      var img = el.querySelector('.print-chart-img');
+  };
+  const cleanUpAfterPrint = () => {
+    document.querySelectorAll('[_echarts_instance_]').forEach(el => {
+      const img = el.querySelector('.print-chart-img');
       if (!img) return;
       img.remove();
       el.style.position = el.dataset.prevPosition || '';
       delete el.dataset.prevPosition;
     });
-  }
+  };
   window.addEventListener('beforeprint', prepareChartsForPrint);
   window.addEventListener('afterprint', cleanUpAfterPrint);
 })();
